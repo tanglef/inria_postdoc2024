@@ -4,7 +4,7 @@
 * [Thesis on label ambiguity in crowdsourcing setting]{.animate__bounceInLeft data-appear-parent="true"}
 * [Today's goal: explore the world of crowdsourced datasets]{.animate__bounceInLeft data-appear-parent="true"}
 
-## Supervisors and researchers who helped me
+## Supervisors and more
 
 ::: {layout-nrow=2 layout-ncol=3}
 ![Benjamin Charlier](images/Benjamin_Charlier.jpg){.animate__fadeInDown width=50% height=180}
