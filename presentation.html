@@ -8,7 +8,7 @@
 <link href="presentation_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="presentation_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="presentation_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.388">
+  <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Tanguy Lefort">
   <meta name="dcterms.date" content="2024-07-05">
@@ -356,7 +356,7 @@ Tanguy Lefort
 <li><a href="#/identify-ambiguous-tasks" id="/toc-identify-ambiguous-tasks">Identify ambiguous tasks</a></li>
 <li><a href="#/aggregate-labels" id="/toc-aggregate-labels">Aggregate labels</a></li>
 <li><a href="#/application-to-plntnet" id="/toc-application-to-plntnet">Application to Pl@ntNet</a></li>
-<li><a href="#/conclusion" id="/toc-conclusion">Conclusion</a></li>
+<li><a href="#/take-home-message" id="/toc-take-home-message">Take home message</a></li>
 </ul>
 </nav>
 </section>
@@ -372,44 +372,56 @@ Tanguy Lefort
 <section id="supervisors-and-researchers-who-helped-me" class="slide level2 center">
 <h2>Supervisors and researchers who helped me</h2>
 <div class="quarto-layout-panel" data-layout-nrow="2" data-layout-ncol="3">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/Benjamin_Charlier.jpg" class="animate__fadeInDown" style="width:50.0%" height="180"></p>
 <figcaption>Benjamin Charlier</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/alexis.png" class="animate__fadeInDown" style="width:50.0%" height="180"></p>
 <figcaption>Alexis Joly</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/joseph_2018.png" class="animate__fadeInDown" style="width:50.0%" height="180"></p>
 <figcaption>Joseph Salmon</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/pierre_bonnet.jpg" class="animate__fadeInDown" style="width:50.0%" height="180"></p>
 <figcaption>Pierre Bonnet</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/JC_lombardo.jpeg" class="animate__fadeInDown" style="width:50.0%" height="180"></p>
 <figcaption>Jean-Christophe Lombardo</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/Affouard.jpg" class="animate__fadeInDown" style="width:50.0%" height="180"></p>
 <figcaption>Antoine Affouard</figcaption>
 </figure>
+</div>
 </div>
 </div>
 </div>
@@ -422,20 +434,20 @@ Tanguy Lefort
 <section id="training-a-classifier" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Training a classifier</h2>
 
-<img data-src="./images/questioning_labels_0.png" id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="r-stretch quarto-figure-center"></section>
+<img data-src="./images/questioning_labels_0.png" class="r-stretch"></section>
 <section id="training-a-classifier-1" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Training a classifier</h2>
 
-<img data-src="./images/questioning_labels.png" id="fig-539a35d47e664c97a50115a146a7f1bd-2" class="r-stretch quarto-figure-center"></section>
+<img data-src="./images/questioning_labels.png" class="r-stretch"></section>
 <section id="crowd-labels" class="slide level2 center">
 <h2>Crowd labels</h2>
 
-<img data-src="./images/notations.png" id="fig-539a35d47e664c97a50115a146a7f1bd-3" class="r-stretch quarto-figure-center"><p><span class="math inline">\(\Longrightarrow\)</span> We write <span class="math inline">\(y_i^{(j)}\)</span> the answer from worker <span class="math inline">\(w_j\)</span> to task <span class="math inline">\(x_i\)</span> <span class="math inline">\(\Longleftarrow\)</span></p>
+<img data-src="./images/notations.png" class="r-stretch"><p><span class="math inline">\(\Longrightarrow\)</span> We write <span class="math inline">\(y_i^{(j)}\)</span> the answer from worker <span class="math inline">\(w_j\)</span> to task <span class="math inline">\(x_i\)</span> <span class="math inline">\(\Longleftarrow\)</span></p>
 </section>
 <section id="pipeline-available-in-the-peerannot-library" class="slide level2 center">
 <h2>Pipeline available in the peerannot library</h2>
 
-<img data-src="./images/strategies_crowd_data.png" id="fig-539a35d47e664c97a50115a146a7f1bd-4" class="r-stretch quarto-figure-center"></section></section>
+<img data-src="./images/strategies_crowd_data.png" class="r-stretch"></section></section>
 <section>
 <section id="identify-ambiguous-tasks" class="title-slide slide level1 center">
 <h1>Identify ambiguous tasks</h1>
@@ -503,23 +515,11 @@ Tanguy Lefort
 <div class="columns">
 <div class="column" style="width:37%;">
 <h3 id="cifar-10h-k10">CIFAR-10H: K=10</h3>
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-5" class="quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div>
-<img data-src="./images/subset_lowest_waum_c10h.png" id="fig-539a35d47e664c97a50115a146a7f1bd-5">
-</div>
-</figure>
-</div>
+<p><img data-src="./images/subset_lowest_waum_c10h.png"></p>
 <p>plane, car, bird, cat, deer, dog, frog, horse, ship, truck</p>
 </div><div class="column" style="width:63%;">
 <h3 id="labelme-k8">LabelMe: K=8</h3>
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-6" class="quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div>
-<img data-src="./images/lowest_labelme_waum.png" id="fig-539a35d47e664c97a50115a146a7f1bd-6">
-</div>
-</figure>
-</div>
+<p><img data-src="./images/lowest_labelme_waum.png"></p>
 <p>highway, insidecity, tallbuilding, street, forest, coast, mountain, open country.</p>
 </div>
 </div>
@@ -617,13 +617,7 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
 </ul>
 <div class="columns">
 <div class="column" style="width:70%;">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-7" class="quarto-figure quarto-figure-center" width="100%">
-<figure class="quarto-float quarto-float-fig">
-<div>
-<img data-src="./images/DS_EM.png" id="fig-539a35d47e664c97a50115a146a7f1bd-7" style="width:100.0%">
-</div>
-</figure>
-</div>
+<p><img data-src="./images/DS_EM.png" style="width:100.0%"></p>
 </div><div class="column" style="width:30%;">
 <ul>
 <li>Prevalence: <span class="math inline">\(\rho_k=\mathbb{P}(y_i^\star=k)\)</span></li>
@@ -643,22 +637,10 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
 <div class="quarto-layout-panel" data-layout="[[20,10]]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-8" class="quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div>
-<img data-src="./images/acc_labelme.png" id="fig-539a35d47e664c97a50115a146a7f1bd-8">
-</div>
-</figure>
-</div>
+<p><img data-src="./images/acc_labelme.png"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-9" class="quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div>
-<img data-src="./images/legend_ablation_study.png" id="fig-539a35d47e664c97a50115a146a7f1bd-9">
-</div>
-</figure>
-</div>
+<p><img data-src="./images/legend_ablation_study.png"></p>
 </div>
 </div>
 </div>
@@ -672,7 +654,7 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
 <section id="plntet-aggregation" class="slide level2 center">
 <h2>Pl@ntet aggregation</h2>
 
-<img data-src="./images/schema_plantnet_aggregation.png" id="fig-539a35d47e664c97a50115a146a7f1bd-10" class="r-stretch quarto-figure-center"></section>
+<img data-src="./images/schema_plantnet_aggregation.png" class="r-stretch"></section>
 <section id="dataset-specifications" class="slide level2 center">
 <h2>Dataset specifications</h2>
 <ul>
@@ -689,23 +671,44 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
 <h2>How to evaluate the performance</h2>
 <ul>
 <li>No ground truth <span class="math inline">\(\rightarrow\)</span> make one!</li>
-<li>Extraction of <span class="math inline">\(98\)</span> botanical experts (TelaBotanica + commmunity knowledge)</li>
+<li>Extraction of <span class="math inline">\(98\)</span> botanical experts (TelaBotanica + commmunity)</li>
+</ul>
+
+<img data-src="./images/sankey_v2.png" class="r-stretch"></section>
+<section id="aggregation-strategies-that-scale" class="slide level2 center">
+<h2>Aggregation strategies that scale:</h2>
+<ul>
+<li>Majority Vote</li>
+<li>WAWA: Majority Vote with worker weight=accuracy against MV</li>
+<li>TwoThird: One of the tools of iNaturalist. Accept label if:
+<ul>
+<li>more than two votes</li>
+<li>2/3 consensus</li>
+</ul></li>
 </ul>
 </section>
 <section id="results" class="slide level2 center">
 <h2>Results</h2>
+<div class="quarto-layout-panel" data-layout="[[20,20]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="./images/precision_and_recall_one_disagreeement__macro.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="./images/accuracy_by_vol_class_kept_one_disagreeement__micro.png"></p>
+</div>
+</div>
+</div>
 </section></section>
-<section>
-<section id="conclusion" class="title-slide slide level1 center">
-<h1>Conclusion</h1>
-
-</section>
-<section id="take-home-message-and-perspectives" class="slide level2 center">
-<h2>Take home message and perspectives</h2>
+<section id="take-home-message" class="title-slide slide level1 center">
+<h1>Take home message</h1>
+<p>dgshjk</p>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
-</section></section>
+</div>
+</section>
     </div>
   </div>
 
@@ -994,6 +997,29 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
         // clear code selection
         e.clearSelection();
       });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+              // target, if specified
+              link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1030,7 +1056,11 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
@@ -1070,21 +1100,6 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
           });
         }
       }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-              // target, if specified
-              link.setAttribute("target", "_blank");
-          }
-        }
     });
     </script>
     
