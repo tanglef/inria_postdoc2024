@@ -1,0 +1,292 @@
+# Quick word about myself
+
+* [Master in Biostatistics (Univ. Montpellier)]{.animate__bounceInLeft data-appear-parent="true"}
+* [Thesis on label ambiguity in crowdsourcing setting]{.animate__bounceInLeft data-appear-parent="true"}
+* [Today's goal: explore the world of crowdsourced datasets]{.animate__bounceInLeft data-appear-parent="true"}
+
+## Supervisors and researchers who helped me
+
+::: {layout-nrow=2 layout-ncol=3}
+![Benjamin Charlier](images/Benjamin_Charlier.jpg){.animate__fadeInDown width=50% height=180}
+
+![Alexis Joly](images/alexis.png){.animate__fadeInDown width=50% height=180}
+
+![Joseph Salmon](images/joseph_2018.png){.animate__fadeInDown width=50% height=180}
+
+![Pierre Bonnet](images/pierre_bonnet.jpg){.animate__fadeInDown width=50% height=180}
+
+![Jean-Christophe Lombardo](images/JC_lombardo.jpeg){.animate__fadeInDown width=50% height=180}
+
+![Antoine Affouard](images/Affouard.jpg){.animate__fadeInDown width=50% height=180}
+:::
+
+# Crowdsourcing: where is my data coming from?
+
+## Training a classifier {auto-animate=true}
+
+![](./images/questioning_labels_0.png)
+
+## Training a classifier  {auto-animate=true}
+
+![](./images/questioning_labels.png)
+
+## Crowd labels
+
+![](./images/notations.png)
+
+$\Longrightarrow$ We write $y_i^{(j)}$ the answer from worker $w_j$ to task $x_i$ $\Longleftarrow$
+
+## Pipeline available in the peerannot library
+
+![](./images/strategies_crowd_data.png)
+
+# Identify ambiguous tasks
+
+## Entropy
+
+\begin{align*}
+    H(p)&=-\sum_{k}p_k\log(p_k) \quad\text{with}\quad p = \frac{1}{|\mathcal{A}(x_i)|}\left(\sum_{j\in \mathcal{A}(x_i)} \mathbf{1}(y_i^{(j)}=k)\right)_{k\in[K]}
+\end{align*}
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### Pros
+
+- Easy to compute
+- Lots of theory
+
+:::
+
+::: {.column width="45%"}
+### Cons
+
+- Only representative for a large number of labels
+- Null entropy = Single label or Consensus
+
+:::
+
+::::
+
+. . .
+
+
+## Weighted Areas Under the Margin (Lefort et al. 2024)
+
+- Adapted from the $\color{blue}{\text{Area Under the Margin (Pleiss et al. 2021)}}$ in the supervised setting
+- Detect images "hard to learn" for a given NN classifier during $T$ training epochs
+
+. . .
+
+$$
+\mathrm{WAUM}(x_i) = \frac{1}{\displaystyle\sum_{j'\in\mathcal{A}(x_i)} s^{(j')}(x_i)} \sum_{j\in\mathcal{A}(x_i)} s^{(j)}(x_i) \color{blue}{\left\{\frac{1}{T} \sum_{t=1}^T \sigma(\mathcal{C}(x_i))_{y_i^{(j)}} -  \sigma(\mathcal{C}(x_i))_{[2]}\right\}}
+$$
+
+
+
+- Each worker has a weight $s^{(j)}(x_i)>0$ (Servajean et al. 2017)
+- The higher the WAUM the easier the task was to classify
+
+## Weighted Areas Under the Margin
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### Pros
+
+- Works with few labels
+- Considers the tasks' difficulty using the tasks
+
+:::
+
+::: {.column width="45%"}
+### Cons
+
+- Sensitive to architecture
+- Can be computationally expensive
+
+:::
+
+::::
+
+## Examples of identified images using the WAUM
+
+:::: {.columns}
+
+::: {.column width="37%"}
+### CIFAR-10H: K=10
+
+![](./images/subset_lowest_waum_c10h.png)
+
+plane, car, bird, cat, deer, dog, frog, horse, ship, truck
+:::
+
+::: {.column width="63%"}
+### LabelMe: K=8
+
+![](./images/lowest_labelme_waum.png)
+
+highway, insidecity, tallbuilding, street, forest, coast, mountain, open country.
+
+:::
+
+::::
+
+# Aggregate labels
+
+## (Weighted) Majority Votes {.animate__faster}
+
+$$
+\hat y_i = \underset{k\in[K]}{\mathrm{argmax}}\left(\sum_{j\in\mathcal{A}(x_i)} s^{(j)}\mathbf{1}(y_i^{(j)}=k)\right)_k
+$$
+
+
+::: {.panel-tabset}
+
+### MV {.animate__faster}
+
+- Majority Vote
+- $s^{(j)}=1$ for all workers
+- Sensitive to poorly performing workers
+- Lots of theory for performance under different settings
+
+### WAWA {.animate__faster}
+
+- Worker Agreement with Aggregate (Appen, 2021)
+- $s^{(j)}=\mathrm{Accuracy}(\{y_i^{(j)}\}_i, \hat y_i^{\mathrm{MV}})\rightarrow$ WAWA
+- Easy to compute and less sensitive than MV
+
+### Shapley-based
+
+- *Weighted majority vote using Shapley values in crowdsourcing* Lefort et al. 2024 (CAp)
+- Use Shapley values as weights for the interpretability:
+
+$$
+s^{(j)} = \sum_i \left|\sum_{S\subset [n_\texttt{worker}]} \frac{|S|! (n_\texttt{worker}-|S|-1)!}{n_\texttt{worker}!}[\nu_{x_i, f}(S\cup \{j\}) - \nu_{x_i, f}(S)]\right|
+$$
+
+### IWMV
+
+- Iterative Weighted Majority Vote (Li, 2014)
+- Iteratively apply WAWA until convergence
+
+### ZBS
+
+- Zero Based Skill (crowdkit)
+- Gradient descent version of WAWA
+
+At each step $t$:
+$$
+s^{(j)}_t \gets s^{(j)}_{t-1} - \eta \left(s^{(j)}_{t-1} - \mathrm{Accuracy}(\{y_i^{(j)}\}_i), \hat y_i^{t-1}\right)
+$$
+
+:::
+
+## Dawid and Skene
+
+- Workers are defined by their pairwise confusions.
+- This answer follows a multinomial distribution.
+
+$$
+y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
+$$
+
+where $\pi^{(j)}_{k,\ell}=\mathbb{P}(\text{worker } j \text{ answers } \ell \text{ with truth } k)$
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### Pros
+
+- Worker uncertainty is modeled
+- Can use adversarial workers
+
+:::
+
+::: {.column width="45%"}
+### Cons
+
+- Memory issue: $n_\texttt{worker} \times K^2$ parameters for confusion matrices only
+
+:::
+
+::::
+
+
+## Dawid and Skene (obtain the labels)
+
+-  Probabilistic model $\rightarrow$ likelihood maximization
+$$
+        \prod_{i\in [n_{\text{task}}]}\prod_{k \in [K]}\left[\rho_k\prod_{k\in [n_{\text{worker}}]}
+        \prod_{\ell\in [K]}(\pi^{(j)}_{k, \ell})^{\mathbf{1}_{\{y_i^{(j)}=\ell\}}}
+        \right]^{T_{i,k}}
+        $$
+
+:::: {.columns}
+
+::: {.column width="70%"}
+![](./images/DS_EM.png){width=100%}
+
+:::
+
+::: {.column width="30%"}
+- Prevalence: $\rho_k=\mathbb{P}(y_i^\star=k)$
+- Labels: $T_{i,k}=\mathbf{1}(y_i^\star=k)$
+
+:::
+::::
+
+
+
+## Results on LabelMe dataset (Rodrigues et al., 2018)
+
+- $K=8$ for $1000$ images and $59$ workers
+- Each image: $|\mathcal{A}(x_i)|\leq 3$ $\Rightarrow$ Entropy not useful
+- Prune images with $\mathrm{WAUM}<q_{0.01}$ (quantile of WAUM)
+
+. . .
+
+
+::: {layout="[[20,10]]" layout-valign="center"}
+
+![](./images/acc_labelme.png)
+
+![](./images/legend_ablation_study.png)
+
+:::
+
+
+# Application to Pl@ntNet
+
+## Pl@ntet aggregation
+
+![](./images/schema_plantnet_aggregation.png)
+
+## Dataset specifications
+
+- South Western European Flora since 2017
+- 823 000 users and $K>11 000$
+- $>6.5$M tasks
+- $>9$M votes casted
+
+. . .
+
+
+**High imbalance**:
+    $80\%$ of images are represented by $10\%$ of votes
+
+## How to evaluate the performance
+
+- No ground truth $\rightarrow$ make one!
+- Extraction of $98$ botanical experts (TelaBotanica + commmunity knowledge)
+
+## Results
+
+# Conclusion
+
+## Take home message and perspectives
+

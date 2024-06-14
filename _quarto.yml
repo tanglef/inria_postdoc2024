@@ -1,0 +1,45 @@
+project:
+  render:
+    - presentation.qmd
+  resources: images/*
+
+title: "Crowdsourcing and citizen science"
+subtitle: "How to handle our data?"
+
+author:
+  - name: Tanguy Lefort
+    email: tanguy.lefort@inria.fr
+    affiliations: University of Montpellier, INRIA
+
+license: CC BY-SA
+
+# bibliography: references.bib
+# csl: ieee.csl
+
+date: 2024-07-05
+format:
+  revealjs:
+    code-overflow: wrap
+    code-line-numbers: false
+    title-slide-attributes:
+      data-autoappear: '{"h1":["animate__flipInX, slow"],".subtitle":{"animation":"animate__fadeInDown", "speed":"faster", "split":"letters", "delay":"40", "container-delay":"1000"}}'
+    center: true
+    theme: dark
+    navigation-mode: vertical
+    transition: slide
+    slide-number: c/t
+    background-transition: fade
+    controls-layout: bottom-right
+    chalkboard: false
+    menu: false
+    css: style.css
+    section-divs: false
+    link-external-newwindow: true
+    appearance:
+      autoappear: true
+      autoelements: {"ul li": "animate__fadeInLeft", "speed":"fast"}
+      appearparents: false
+    toc: true
+    toc-depth: 1
+revealjs-plugins:
+  - appearance
