@@ -19,8 +19,8 @@ jobs:
 
       - name: add extension
         run: |
-          quarto extension add martinomagnifico/appearance
-          quarto extension add mcanouil/animate
+          quarto add martinomagnifico/appearance
+          quarto add mcanouil/animate
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
