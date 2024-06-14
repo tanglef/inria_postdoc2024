@@ -282,11 +282,28 @@ $$
 ## How to evaluate the performance
 
 - No ground truth $\rightarrow$ make one!
-- Extraction of $98$ botanical experts (TelaBotanica + commmunity knowledge)
+- Extraction of $98$ botanical experts (TelaBotanica + commmunity)
+
+![](./images/sankey_v2.png)
+
+## Aggregation strategies that scale:
+
+- Majority Vote
+- WAWA: Majority Vote with worker weight=accuracy against MV
+- TwoThird: One of the tools of iNaturalist. Accept label if:
+    - more than two votes
+    - 2/3 consensus
 
 ## Results
 
-# Conclusion
+::: {layout="[[20,20]]" layout-valign="center"}
 
-## Take home message and perspectives
+![](./images/precision_and_recall_one_disagreeement__macro.png)
 
+![](./images/accuracy_by_vol_class_kept_one_disagreeement__micro.png)
+
+:::
+
+# Take home message
+
+dgshjk
