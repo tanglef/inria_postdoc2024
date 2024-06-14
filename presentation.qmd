@@ -262,6 +262,10 @@ $$
 
 # Application to Pl@ntNet
 
+## Pl@ntNet system (in short)
+
+![](./images/plantnet_schema_global_green.png)
+
 ## Pl@ntet aggregation
 
 ![](./images/schema_plantnet_aggregation.png)
@@ -286,7 +290,7 @@ $$
 
 ![](./images/sankey_v2.png)
 
-## Aggregation strategies that scale:
+## Scaling aggregation strategies
 
 - Majority Vote
 - WAWA: Majority Vote with worker weight=accuracy against MV
@@ -296,7 +300,7 @@ $$
 
 ## Results
 
-::: {layout="[[20,20]]" layout-valign="center"}
+::: {layout="[[19,21]]" layout-valign="center"}
 
 ![](./images/precision_and_recall_one_disagreeement__macro.png)
 
@@ -306,4 +310,16 @@ $$
 
 # Take home message
 
-dgshjk
+- Crowdsourcing allows to collect data easily
+- ... but using this data efficiently requires expertise
+- Improve input quality $\Rightarrow$ Improve output predictions
+
+. . .
+
+- Peerannot library for classification crowdsourced datasets
+
+![](./images/qr-code-styling.png)
+
+# Thank you
+
+![](./images/nelumbo.png)
