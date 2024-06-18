@@ -1,4 +1,4 @@
-# Quick word about myself
+# Quick word about myself {.unnumbered .unlisted}
 
 * [Master in Biostatistics (Univ. Montpellier)]{.animate__bounceInLeft data-appear-parent="true"}
 * [Thesis on label ambiguity in crowdsourcing setting]{.animate__bounceInLeft data-appear-parent="true"}
@@ -308,7 +308,7 @@ $$
 
 :::
 
-# Take home message
+# Take home message {.unnumbered .unlisted}
 
 - Crowdsourcing allows to collect data easily
 - ... but using this data efficiently requires expertise
@@ -320,6 +320,6 @@ $$
 
 ![](./images/qr-code-styling.png)
 
-# Thank you
+# Thank you {.unnumbered .unlisted}
 
 ![](./images/nelumbo.png)
