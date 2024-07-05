@@ -8,7 +8,7 @@
 <link href="presentation_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="presentation_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="presentation_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.555">
+  <meta name="generator" content="quarto-1.5.53">
 
   <meta name="author" content="Tanguy Lefort">
   <meta name="dcterms.date" content="2024-07-05">
@@ -369,6 +369,9 @@ Tanguy Lefort
 </section>
 <section id="supervisors-and-more" class="slide level2 center">
 <h2>Supervisors and more</h2>
+<div>
+
+</div>
 <div class="quarto-layout-panel" data-layout-ncol="3" data-layout-nrow="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
@@ -470,8 +473,7 @@ Tanguy Lefort
 <li>Only representative for a large number of labels</li>
 <li>Null entropy = Single label or Consensus</li>
 </ul>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <section id="weighted-areas-under-the-margin-lefort-et-al.-2024" class="slide level2 center">
@@ -505,8 +507,7 @@ Tanguy Lefort
 <li>Sensitive to architecture</li>
 <li>Can be computationally expensive</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="examples-of-identified-images-using-the-waum" class="slide level2 center">
 <h2>Examples of identified images using the WAUM</h2>
@@ -519,8 +520,7 @@ Tanguy Lefort
 <h3 id="labelme-k8">LabelMe: K=8</h3>
 <p><img data-src="./images/lowest_labelme_waum.png"></p>
 <p>highway, insidecity, tallbuilding, street, forest, coast, mountain, open country.</p>
-</div>
-</div>
+</div></div>
 </section></section>
 <section>
 <section id="aggregate-labels" class="title-slide slide level1 center">
@@ -600,8 +600,7 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
 <ul>
 <li>Memory issue: <span class="math inline">\(n_\texttt{worker} \times K^2\)</span> parameters for confusion matrices only</li>
 </ul>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <section id="dawid-and-skene-obtain-the-labels" class="slide level2 center">
@@ -621,8 +620,7 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
 <li>Prevalence: <span class="math inline">\(\rho_k=\mathbb{P}(y_i^\star=k)\)</span></li>
 <li>Labels: <span class="math inline">\(T_{i,k}=\mathbf{1}(y_i^\star=k)\)</span></li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="results-on-labelme-dataset-rodrigues-et-al.-2018" class="slide level2 center">
 <h2>Results on LabelMe dataset (Rodrigues et al., 2018)</h2>
@@ -632,6 +630,9 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
 <li>Prune images with <span class="math inline">\(\mathrm{WAUM}&lt;q_{0.01}\)</span> (quantile of WAUM)</li>
 </ul>
 <div class="fragment">
+<div>
+
+</div>
 <div class="quarto-layout-panel" data-layout="[[20,10]]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
@@ -657,6 +658,13 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
 <h2>Pl@ntet aggregation</h2>
 
 <img data-src="./images/schema_plantnet_aggregation.png" class="r-stretch"></section>
+<section id="plntnet-weights" class="slide level2 center">
+<h2>Pl@ntNet weights</h2>
+<p><span class="math display">\[
+f(n_j)=n_j^\alpha - n_j^\beta + \gamma, \text{ with }\begin{cases} \alpha=0.5 \\ \beta=0.2 \\ \gamma=\log(2.1)\simeq 0.74 \end{cases}
+\]</span></p>
+
+<img data-src="./images/weight_function.png" class="r-stretch"></section>
 <section id="dataset-specifications" class="slide level2 center">
 <h2>Dataset specifications</h2>
 <ul>
@@ -691,6 +699,9 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
 </section>
 <section id="results" class="slide level2 center">
 <h2>Results</h2>
+<div>
+
+</div>
 <div class="quarto-layout-panel" data-layout="[[19,21]]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 47.5%;justify-content: center;">
@@ -970,18 +981,7 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1013,7 +1013,29 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1021,7 +1043,7 @@ y^{(j)}|y^\star\sim\mathcal{M}\text{ultinomial}(\pi^{(j)}_{y^\star,\cdot})
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
