@@ -266,9 +266,18 @@ $$
 
 ![](./images/plantnet_schema_global_green.png)
 
+
 ## Pl@ntet aggregation
 
 ![](./images/schema_plantnet_aggregation.png)
+
+## Pl@ntNet weights
+
+$$
+f(n_j)=n_j^\alpha - n_j^\beta + \gamma, \text{ with }\begin{cases} \alpha=0.5 \\ \beta=0.2 \\ \gamma=\log(2.1)\simeq 0.74 \end{cases}
+$$
+
+![](./images/weight_function.png)
 
 ## Dataset specifications
 
